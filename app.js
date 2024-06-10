@@ -44,6 +44,47 @@ function displayLibrary() {
   });
 }
 
+// Modal handling
+const modal = document.getElementById("newBookModal");
+const btn = document.getElementById("newBookBtn");
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Handle form submission
+document.getElementById("newBookForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = parseInt(document.getElementById("pages").value);
+    const read = document.getElementById("read").value === "true";
+  
+    addBookToLibrary(title, author, pages, read);
+  
+    // Close the modal
+    modal.style.display = "none";
+  
+    // Clear the form
+    document.getElementById("newBookForm").reset();
+  });
+  
+  
 
 addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', 281, true);
 addBookToLibrary('1984', 'George Orwell', 328, false);
