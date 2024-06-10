@@ -8,6 +8,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Method to toggle the read status of a book
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read;
+  };
 
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
@@ -21,6 +25,11 @@ function removeBookFromLibrary(index) {
     displayLibrary();
   }
 
+  // Function to toggle the read status of a book
+function toggleReadStatus(index) {
+    myLibrary[index].toggleReadStatus();
+    displayLibrary();
+  }
 
 function displayLibrary() {
   const libraryDiv = document.getElementById("library");
@@ -46,7 +55,7 @@ function displayLibrary() {
     readElement.textContent = `Read: ${book.read ? 'Yes' : 'No'}`;
     card.appendChild(readElement);
 
-     // Create remove button
+     //  remove button
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
     removeButton.setAttribute('data-index', index);
@@ -54,6 +63,15 @@ function displayLibrary() {
       removeBookFromLibrary(index);
     };
     card.appendChild(removeButton);
+
+     // toggle read status button
+     const toggleReadButton = document.createElement('button');
+     toggleReadButton.textContent = 'Change Read Status';
+     toggleReadButton.setAttribute('data-index', index);
+     toggleReadButton.onclick = function() {
+       toggleReadStatus(index);
+     };
+     card.appendChild(toggleReadButton);
 
     libraryDiv.appendChild(card);
   });
