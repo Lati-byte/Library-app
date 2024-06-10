@@ -15,6 +15,12 @@ function addBookToLibrary(title, author, pages, read) {
   displayLibrary();
 }
 
+// Function to remove a book from the library
+function removeBookFromLibrary(index) {
+    myLibrary.splice(index, 1);
+    displayLibrary();
+  }
+
 
 function displayLibrary() {
   const libraryDiv = document.getElementById("library");
@@ -39,6 +45,15 @@ function displayLibrary() {
     const readElement = document.createElement('p');
     readElement.textContent = `Read: ${book.read ? 'Yes' : 'No'}`;
     card.appendChild(readElement);
+
+     // Create remove button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.setAttribute('data-index', index);
+    removeButton.onclick = function() {
+      removeBookFromLibrary(index);
+    };
+    card.appendChild(removeButton);
 
     libraryDiv.appendChild(card);
   });
