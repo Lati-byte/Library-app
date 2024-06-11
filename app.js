@@ -58,6 +58,7 @@ function displayLibrary() {
      //  remove button
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
+    removeButton.classList.add('remove-button'); // Add class for styling
     removeButton.setAttribute('data-index', index);
     removeButton.onclick = function() {
       removeBookFromLibrary(index);
@@ -67,6 +68,7 @@ function displayLibrary() {
      // toggle read status button
      const toggleReadButton = document.createElement('button');
      toggleReadButton.textContent = 'Change Read Status';
+     toggleReadButton.classList.add('toggle-read-button'); // Add class for styling
      toggleReadButton.setAttribute('data-index', index);
      toggleReadButton.onclick = function() {
        toggleReadStatus(index);
@@ -119,6 +121,11 @@ document.getElementById("newBookForm").addEventListener("submit", function(event
   
   
 
-addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', 281, true);
-addBookToLibrary('1984', 'George Orwell', 328, false);
-addBookToLibrary('Moby Dick', 'Herman Melville', 635, true);
+  addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', 281, true);
+  addBookToLibrary('1984', 'George Orwell', 328, false);
+  addBookToLibrary('Moby Dick', 'Herman Melville', 635, true);
+  addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, true);
+  addBookToLibrary('Pride and Prejudice', 'Jane Austen', 279, false);
+  addBookToLibrary('War and Peace', 'Leo Tolstoy', 1225, true);
+  addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 214, false);
+  addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, true);
